@@ -26,8 +26,6 @@ class chatBotAssistant():
             "reject":5
         }
         self.intent_map = switch_keys_values(intent_map)
-
-        self.
     
     def _load_json_response(self):
         intent_map = {}
@@ -179,138 +177,115 @@ class chatBotAssistant():
         if mode == "pesan-1":
             response = "Apa yang ingin Anda pesan? Kami menawarkan berbagai macam kopi, teh, dan minuman dingin lainnya. Juga tersedia aneka pilihan makanan ringan seperti ayam tiren. Apa yang ingin Anda pesan?"
         if mode == "confirm":
-            response = "apakah anda ingin mengkonfirmasi pesana ini? (y/n)"
+            response = "apakah anda ingin mengkonfirmasi pesanan ini? (y/n)"
         if mode == "pesan-2":
             response = "Apakah anda ingin memesan pesanan lain?"
-        if mode == "reject-1":
-            response = ""
+        if mode == "pesan-3":
+            response = "Silahkan ulangi pesanan anda"
+        if mode == "reject-table":
+            response = "Pesanannya atas nama siapa? table berapa kak?  "
+        if mode == "after-table":
+            response = "Terima kasih kak atas pesanannya, pesanan kakak adalah [pesanan] /n mohon ditunggu ya :)"
         return response
 
     def predict(self, input, history=[], infos={'state':[0,0],'orders':[], 'komplain':"", 'profile':""}):
         state = infos['state']
         if state[0] == 0:
-            if state[0] == 0:
-                response = 
-        
-        if state == 0:
-            
-                    user_chat = input()
-                    state = self._exit_check(state, user_chat)
-                    if state == 1:
-                        break
-                    
-                    intent_pred = self.intent_model.predict([user_chat])[0]
-                    pdb.set_trace()
-                    if intent_pred in [1,2,3]:
-                        state = 2
-                        intent = intent_map[intent_pred]
-            if state == 2:
-                print('state 2')
-                prev_state = 2
-                if intent == 'komplain':
-                    komplain, state = self.complain_response()
-                    print(state)
-                elif intent == 'menu':
-                    state = self.menu_response()
-                elif intent == 'pesan':
-                    state = 3
-                else:
-                    print('we dont understand, please check the menu')
-                    state = self.menu_response()
-                pdb.set_trace()
-            
-            if state == 3:
-                print(state)
-                order_list, state = self.order_response(state=3)
+            if state[1] == 0:
+                response = self.responses(mode='welcome')
+                infos['state'] = [0,1]
+                history.append((input, response))
+                return history, history , infos
+            if state[1] == 1:
+                intent_pred = self.intent_model.predict([input])[0]
+                state = [1,0]
+        if state[0] == 1:
+            if state[1] == 0:
+                intent = self.intent_map[intent_pred]
+                response_map = {'komplain': ['komplain-in', [2,0]],
+                                'pesan': ['pesan-1', [4,0]],
+                                'menu': ['menu',[4,0]]}
+                response = self.responses(response_map[intent][0])
+                state = response_map[intent][1]
+                infos['state'] = state
+                history.append((input, response))
+                return history, history, infos
+        if state[0] == 2:
+            if state[1] == 0:
+                response = self.responses(mode='after-komplain')
+                state = [0,1]
+                infos['state']=state
+                infos['komplain'] =input
+                history.append((input, response))
 
-            if state == 4:
-                prev_state = 4
-                #chat all the order
-                print(order_list)
-                #ask for name and table
-                print('input your name and table')
-                cust_name = input()
-                print(cust_name)
-                #user input name and table
-                print('thank you')
-                #thank you, and reconfirm
-                state = 1
+                return history, history, infos
+        if state[0] == 3:
+            if state[1] == 0:
+                response = self.responses(mode='menu')
+                state = [4,0]
+                infos['state'] = state
+                history.append((input, response))
+                return history, history, infos
+        if state[0] == 4:
+            if state[1] == 0:
+                response = self.responses(mode='confirm')
+                response = response + input
+                state = [4,1]
+                infos['state'] = state
+                infos['orders'].append(input)
+                history.append((input, response))
+                return history, history, infos
 
-        
-        responses.append((input, bot_response))
-        return responses, history, infos
+            if state[1] == 1:
+                intent_pred = self.intent_model.predict([input])[0]
+                intent = self.intent_map[intent_pred]
+                response_map = {'confirm': ['pesan-2', [4,2]],
+                                'reject': ['pesan-3', [4,0]],
+                                'menu': ['pesan-3',[4,0]]}
+                response = self.responses(response_map[intent][0])
+                state = response_map[intent][1]
+                if state[1] == 0:
+                    infos['order'].pop()
+                infos['state'] = state
+                history.append((input, response))
+                return  history, history, infos
+            if state[1] == 2:
+                intent_pred = self.intent_model.predict([input])[0]
+                intent = self.intent_map[intent_pred]
+                response_map = {'confirm': ['pesan-1', [4,0]],
+                                'reject': ['reject-table',[5,0]]}
+                response = self.responses(response_map[intent][0])
+                state = response_map[intent][1]
+                infos['state'] = state
+                history.append((input, response))
+                return history, history, infos
+        if state[0] == 5:
+            if state[1] == 0:
+                response = self.responses(mode='after-table')
+                response = response.split('[pesanan]')
+                response = response[0] + ','.join(infos['orders']) + response[1]
+                state = [5,1]
+                infos['state'] = state
+                infos['profile'] = input
+                history.append((input, response))
+                return history, history, infos
+            if state[1] == 1:
+                exit()
+                return history, history, infos
 
 
-
-
-def predict(input, state=0, infos=[]):
-    # tokenize the new input sentence
-    if state == 0:
-        print('Welcome')
-        user_chat = input()
-        state = bot._exit_check(state, user_chat)
-        if state == 1:
-        
-        intent_pred = self.intent_model.predict([user_chat])[0]
-        pdb.set_trace()
-        if intent_pred in [1,2,3]:
-            state = 2
-            intent = intent_map[intent_pred]
-    if state == 2:
-        print('state 2')
-        prev_state = 2
-        if intent == 'komplain':
-            komplain, state = self.complain_response()
-            print(state)
-        elif intent == 'menu':
-            state = self.menu_response()
-        elif intent == 'pesan':
-            state = 3
-        else:
-            print('we dont understand, please check the menu')
-            state = self.menu_response()
-        pdb.set_trace()
-    
-    if state == 3:
-        print(state)
-        order_list, state = self.order_response(state=3)
-
-    if state == 4:
-        prev_state = 4
-        #chat all the order
-        print(order_list)
-        #ask for name and table
-        print('input your name and table')
-        cust_name = input()
-        print(cust_name)
-        #user input name and table
-        print('thank you')
-        #thank you, and reconfirm
-        state = 1
-
-    new_user_input_ids = tokenizer.encode(input + tokenizer.eos_token, return_tensors='pt')
-
-    # append the new user input tokens to the chat history
-    bot_input_ids = torch.cat([torch.LongTensor(history), new_user_input_ids], dim=-1)
-
-    # generate a response 
-    history = model.generate(bot_input_ids, max_length=1000, pad_token_id=tokenizer.eos_token_id).tolist()
-
-    # convert the tokens to text, and then split the responses into lines
-    response = tokenizer.decode(history[0]).split("<|endoftext|>")
-    response = [(response[i], response[i+1]) for i in range(0, len(response)-1, 2)]  # convert to tuples of list
-    return response, history, infos
 
 if __name__=='__main__':
     bot = chatBotAssistant()
 
     with gr.Blocks() as demo:
 
-        state = gr.Variable(default_value=[('hi','welcome to tuyul chatbot')])
+        state = gr.Variable([])
+        state1 = gr.Variable({'state':[0,0],'orders':[], 'komplain':"", 'profile':""})
         chatbot = gr.Chatbot(label='Tuyul Asistent')
         text = gr.Textbox(label="Your sentence here... (press enter to submit)", default_value="Hi!")
         
-        text.submit(bot.predict, [text, state], [chatbot, state])
+        text.submit(bot.predict, [text, state, state1], [chatbot, state, state1])
         text.submit(lambda x: "", text, text)
     
     demo.launch()
