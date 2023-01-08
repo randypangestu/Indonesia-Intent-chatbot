@@ -1,0 +1,88 @@
+{
+    "intent_keys":
+        { 
+            "greet":0,
+            "menu":1,
+            "pesan":2,
+            "komplain":3,
+            "confirm":4,
+            "reject":5
+        },
+
+    "common_examples": 
+{
+    "greet": 
+        [
+            "hai","good evening", "hi","selamat pagi", "siang","selamat malam","punten","sore mas",
+            "hello","hallo","Assalamualaikum", "yo","woi"
+        ],
+    "menu": 
+        [
+            "siang, saya ingin lihat menu",
+            "menu",
+            "minta list dong",
+            "saya mau melihat menu",
+            "minta list menunya dong",
+            "mau menu",
+            "minta listnya ya",
+            "menu pls",
+            "bisa minta menunya",
+            "boleh liat menunya"
+        ],
+    "pesan": 
+        [
+            "saya ingin memesan",
+            "1 air putih, 2 teh manis",
+            "saya melakukan pemesanan",
+            "nasi goreng 1 sama ayam 2",
+            "kopi",
+            "1 kapucino, 1 ayam goreng",
+            "teh tarik dan es teh manis",
+            "nasi uduk tidak pedas",
+            "pesan es krim",
+            "pesan ayam goreng",
+            "pesan kopi dan teh manis"
+        ],
+    "komplain": 
+        [
+            "ingin komplain",
+            "saya ingin memberikan review",
+            "saya berniat untuk komplain",
+            "i want to complain",
+            "saya mau komplain",
+            "komplen",
+            "ingin komplain",
+            "ingin komplen",
+            "komplain"
+        ],
+    "confirm": 
+        [
+            "betul",
+            "ya",
+            "ya betul",
+            "tidak salah",
+            "yes",
+            "ho oh",
+            "iyap",
+            "ok",
+            "sip",
+            "yoi",
+            "y",
+            "btul",
+            "yap"
+        ],
+    "reject": 
+        [
+            "nope",
+            "tidak",
+            "tidak betul",
+            "salah",
+            "no",
+            "tidak",
+            "nein",
+            "nggak",
+            "g",
+            "n"
+        ]
+    }
+}

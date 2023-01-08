@@ -1,0 +1,10 @@
+# config.yaml
+
+train_params:
+  custom_dataset: False
+  dataset: 'train-data-hf.json'
+  teacher_model: firqaaa/indo-sentence-bert-base # model from huggingface
+  student_model: sentence-transformers/paraphrase-MiniLM-L3-v2
+
+evaluation_params:
+  evaluate: False

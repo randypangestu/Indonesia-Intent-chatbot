@@ -1,0 +1,293 @@
+{
+    "intent_map":
+        { 
+            "greet":0,
+            "menu":1,
+            "pesan":2,
+            "komplain":3,
+            "confirm":4,
+            "reject":5
+        },
+    "data": [
+        {
+            "text": "hai",
+            "intent": 0
+        },
+        {
+            "text": "good evening",
+            "intent": 0
+        },
+        {
+            "text": "hi",
+            "intent": 0
+        },
+        {
+            "text": "selamat pagi",
+            "intent": 0
+        },
+        {
+            "text": "siang",
+            "intent": 0
+        },
+        {
+            "text": "selamat malam",
+            "intent": 0
+        },
+        {
+            "text": "punten",
+            "intent": 0
+        },
+        {
+            "text": "sore mas",
+            "intent": 0
+        },
+        {
+            "text": "hello",
+            "intent": 0
+        },
+        {
+            "text": "hallo",
+            "intent": 0
+        },
+        {
+            "text": "Assalamualaikum",
+            "intent": 0
+        },
+        {
+            "text": "yo",
+            "intent": 0
+        },
+        {
+            "text": "woi",
+            "intent": 0
+        },
+        {
+            "text": "siang, saya ingin lihat menu",
+            "intent": 0
+        },
+        {
+            "text": "menu",
+            "intent": 1
+        },
+        {
+            "text": "minta list dong",
+            "intent": 1
+        },
+        {
+            "text": "saya mau melihat menu",
+            "intent": 1
+        },
+        {
+            "text": "minta list menunya dong",
+            "intent": 1
+        },
+        {
+            "text": "mau menu",
+            "intent": 1
+        },
+        {
+            "text": "minta listnya ya",
+            "intent": 1
+        },
+        {
+            "text": "menu pls",
+            "intent": 1
+        },
+        {
+            "text": "bisa minta menunya",
+            "intent": 1
+        },
+        {
+            "text": "boleh liat menunya",
+            "intent": 1
+        },
+        {
+            "text": "saya ingin memesan",
+            "intent": 2
+        },
+        {
+            "text": "saya mau pesan",
+            "intent": 2
+        },
+        {
+            "text": "1 air putih, 2 teh manis",
+            "intent": 2
+        },
+        {
+            "text": "saya melakukan pemesanan",
+            "intent": 2
+        },
+        {
+            "text": "nasi goreng 1 sama ayam 2",
+            "intent": 2
+        },
+        {
+            "text": "kopi",
+            "intent": 2
+        },
+        {
+            "text": "1 kapucino, 1 ayam goreng",
+            "intent": 2
+        },
+        {
+            "text": "teh tarik dan es teh manis",
+            "intent": 2
+        },
+        {
+            "text": "nasi uduk tidak pedas",
+            "intent": 2
+        },
+        {
+            "text": "pesan es krim",
+            "intent": 2
+        },
+        {
+            "text": "pesan ayam goreng",
+            "intent": 2
+        },
+        {
+            "text": "pesan kopi dan teh manis",
+            "intent": 2
+        },
+        {
+            "text": "ingin komplain",
+            "intent": 3
+        },
+        {
+            "text": "saya ingin memberikan review",
+            "intent": 3
+        },
+        {
+            "text": "saya berniat untuk komplain",
+            "intent": 3
+        },
+        {
+            "text": "i want to complain",
+            "intent": 3
+        },
+        {
+            "text": "saya mau komplain",
+            "intent": 3
+        },
+        {
+            "text": "komplen",
+            "intent": 3
+        },
+        {
+            "text": "ingin komplain",
+            "intent": 3
+        },
+        {
+            "text": "ingin komplen",
+            "intent": 3
+        },
+        {
+            "text": "komplain",
+            "intent": 3
+        },
+        {
+            "text": "betul",
+            "intent": 4
+        },
+        {
+            "text": "benar",
+            "intent": 4
+        },
+        {
+            "text": "ya",
+            "intent": 4
+        },
+        {
+            "text": "ya betul",
+            "intent": 4
+        },
+        {
+            "text": "tidak salah",
+            "intent": 4
+        },
+        {
+            "text": "yes",
+            "intent": 4
+        },
+        {
+            "text": "ho oh",
+            "intent": 4
+        },
+        {
+            "text": "iyap",
+            "intent": 4
+        },
+        {
+            "text": "ok",
+            "intent": 4
+        },
+        {
+            "text": "sip",
+            "intent": 4
+        },
+        {
+            "text": "yoi",
+            "intent": 4
+        },
+        {
+            "text": "y",
+            "intent": 4
+        },
+        {
+            "text": "btul",
+            "intent": 4
+        },
+        {
+            "text": "betul",
+            "intent": 4
+        },
+        {
+            "text": "yap",
+            "intent": 4
+        },
+        {
+            "text": "nope",
+            "intent": 5
+        },
+        {
+            "text": "tidak",
+            "intent": 5
+        },
+        {
+            "text": "tidak betul",
+            "intent": 5
+        },
+        {
+            "text": "salah",
+            "intent": 5
+        },
+        {
+            "text": "no",
+            "intent": 5
+        },
+        {
+            "text": "nope",
+            "intent": 5
+        },
+        {
+            "text": "tidak",
+            "intent": 5
+        },
+        {
+            "text": "nggak",
+            "intent": 5
+        },
+        {
+            "text": "g",
+            "intent": 5
+        },
+        {
+            "text": "n",
+            "intent": 5
+        },
+        {
+            "text": "n",
+            "intent": 5
+        }
+    ]
+}
