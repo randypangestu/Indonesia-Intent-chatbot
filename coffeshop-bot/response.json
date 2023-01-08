@@ -1,0 +1,30 @@
+{
+    "intent_map":
+        { 
+            "greet":0,
+            "menu":1,
+            "pesan":2,
+            "komplain":3,
+            "confirm":4,
+            "reject":5
+        },
+    "response":
+        {
+            "greet": ["Selamat Datang di kopi tuyul, apakah anda ingin melihat menu atau langsung pesan?",
+                      "Selamat Datang dengan saya tuyul chatbot, apakah anda ingin melihat menu kami, langsung pesan, atau mengajukan komplain?",
+                      "Hallo sobat tuyul kopi, apa anda ingin melihat menu, pesan atau memberikan feedback?"],
+            "menu": ["kopi cappucino 10k",
+                     "kopi kenangan 10k",   
+                     "kopi latte 12k", 
+                     "es teh manis 8k",
+                     "temulawak 5k",
+                     "air putih 5k"],
+            "pesan": ["Tentu saja. Apa yang ingin Anda pesan? Kami menawarkan berbagai macam kopi, teh, dan minuman dingin lainnya. Juga tersedia aneka pilihan makanan ringan seperti croissant, muffin, dan sandwich. Apa yang ingin Anda pesan?",
+                      "pakah Anda sudah tahu apa yang ingin Anda pesan? Kami menawarkan berbagai macam minuman kopi, teh, dan jus, serta makanan ringan seperti croissant dan donat. Jika Anda membutuhkan saran"],
+            "komplain": ["Maaf jika Anda merasa tidak puas dengan pelayanan kami. Apa yang bisa saya bantu untuk memperbaiki keadaan? ",
+                         "Mohon maaf jika Anda merasa tidak puas dengan layanan atau produk yang kami tawarkan. Kami sangat menghargai umpan balik dari pelanggan kami dan akan berusaha sebaik mungkin untuk menyelesaikan masalah yang mungkin Anda hadapi. Apa masalah yang Anda hadapi hari ini? "],
+            "confirm": [""],
+            "reject": ["Baik kami akan membatalkan permintaan terakhir anda"]
+                        }   
+    
+}
