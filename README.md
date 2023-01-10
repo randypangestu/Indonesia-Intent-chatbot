@@ -1,5 +1,6 @@
 # Indonesian-coffeshop-Chatbot-from-scratch
 This repository contains the code for an intent-based chatbot that can understand and respond to natural language inputs in Indonesian. The chatbot was built from scratch using Python, and does not rely on any chatbot platforms or libraries.
+![coffeshop-chatbot-with-gradio](ScreenShot.png)
 
 ## Disclaimer
 Please note that this is a toy project and is not intended for production use. The chatbot's understanding of natural language inputs and ability to generate appropriate responses may be limited. Use at your own risk.
